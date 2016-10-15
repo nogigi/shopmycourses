@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex03</title>
+</head>
+<body>
+<div id="term">
+<form>
+<select name="article" id="article" size="15" onclick="update();">
+<option>pomme
+<option>banane
+<option>fraise
+<option>citron
+<option>poire
+</select><input type="button" id="add" value="ADD" onclick="ADD();" />
+<input type="button" id="del" value="DEL" onclick="DEL();" />
+<select name="panier" id="panier" size="15" onclick="update();">
+</select>
+</form><br/>
+
+</div>
+<script>
+function update()
+{
+	var Article = document.getElementById("article"),
+		panier = document.getElementById("panier"),
+		button_add = document.getElementById("add")
+		button_del = document.getElementById("del");
+		
+	if (Article.value == "")
+		{
+			button_add.disabled = true; 
+		}
+	else
+		{
+			button_add.disabled = false;
+		}		
+	if (panier.value == "")
+		{
+			button_del.disabled = true; 
+		}
+	else
+		{
+			button_del.disabled = false;
+		}	
+}
+
+function ADD()
+{
+	var Article = document.getElementById("article"),
+		panier = document.getElementById("panier"),
+		new_item = document.createElement('option');
+		
+	if (Article.value != "")
+		{
+		new_item = document.createElement( 'option' );
+		new_item.innerHTML = Article.value;
+		Article.removeChild(Article[Article.selectedIndex]); 
+		panier.add(new_item);
+		}
+}
+function DEL()
+{
+	var Article = document.getElementById("article"),
+		panier = document.getElementById("panier"),
+		new_item = document.createElement('option');
+		
+	if (panier.value != "")
+		{
+		new_item = document.createElement( 'option' );
+		new_item.innerHTML = panier.value;
+		panier.removeChild(panier[panier.selectedIndex]); 
+		Article.add(new_item);
+		}
+}
+
+</script>
+
+</body>
+</html>

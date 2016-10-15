@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex01</title>
+</head>
+
+<body>
+<center>
+Salaire brut : <input name="salaire brute" type="text" maxlength="512" id="money" /><br/>
+Personne à charge : <input name="personne" type="text" maxlength="512" id="personne" /><br/>
+<label><input type="radio" name="check" value="1" /> Femme</label>
+<label><input type="radio" name="check" value="2" /> Homme</label><br />
+<input type="button" value="Valide" onclick="check();" /><br/>
+</center>
+<script>
+    function check()
+	{
+        var inputs = document.getElementsByTagName('input'),
+            inputsLength = inputs.length;
+		var money = parseInt(document.getElementById('money').value, 10), // string to int
+			personne = parseInt(document.getElementById('personne').value, 10), // string to int
+			radio = 0;
+			
+			for (var i = 0; i < inputsLength; i++) // get  info 
+			{	
+				if (inputs[i].type === 'radio' && inputs[i].checked)
+					{
+						radio = inputs[i].value;
+					}
+			}
+			
+		if (!isNaN(money) && money >= 0 && !isNaN(personne) && personne >= 0 && radio > 0) // check si le formulaire est ok
+		{
+			var pourcentage = 30 // SOMME DE 18% + 7% + 5% 
+				reduction = 0;
+			
+			if (personne == 3) // reduction d'impo de 1%
+				pourcentage -= 1;
+			else if (personne >= 4) // reduction d'impo de 2%
+				pourcentage -= 2;
+			if (radio = 1) // reduction d'impo de 2% 
+				pourcentage -= 2;
+			reduction = money * pourcentage / 100;
+			money = money - reduction; 
+			alert('Votre salaire net est de ' + money + '$'); // print result 
+		}
+		else
+			alert('bad input!');
+    }
+</script>
+
+</body>
+</html>

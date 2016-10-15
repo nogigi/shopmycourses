@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex05</title>
+</head>
+<body>
+<div id="term">
+<input type="button" value="GO" onclick="main();" /><br/>
+</div>
+<script>
+function main()
+{
+	var tab = [-2,1,4];
+	  for (var i=0; i < tab.length; i++)
+	  {
+		alert(soustrait(tab[i]));
+	  }
+}
+function soustrait(x)
+{
+	var y;
+	
+	y = x - 2;
+	if (y >= 0)
+		return y;
+	else
+		return "Nombre négatif";
+}
+</script>
+
+</body>
+</html>

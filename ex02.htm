@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex02</title>
+</head>
+
+<body>
+<div id="term"></div>
+<script>
+function member(id, name, grade)
+{ 
+    this.id = id; 
+    this.name = name;
+	this.grade = grade;
+     
+    this.toString = function()
+	{
+		var text = "id " + this.id + "name " + this.name + "grade " + this.grade;
+		return (text);
+    } 
+} 
+
+function team()
+{
+	this.member = [];
+	this.addMember = function(member)
+	{
+		this.member.push(member);
+	}
+}
+
+var myteam = new team();
+
+myteam.addMember(new member(2, "BAR", 0));
+myteam.addMember(new member(1, "FOO", 2));
+myteam.addMember(new member(0, "TOTO", 1));
+
+var memberLength = myteam.member.length;
+
+for (var i = 0; i < memberLength; i++)
+	{	
+		alert(myteam.member[i]); 
+	}
+document.getElementById("term" ).innerHTML = "END";
+</script>
+
+</body>
+</html>

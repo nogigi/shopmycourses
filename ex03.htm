@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ex03</title>
+</head>
+
+<body>
+<div id="term">
+Entre <input name="min" type="text" maxlength="512" id="min" value="0" /> et <input name="max" type="text" maxlength="512" id="max" value="20" /><br/>
+<input type="button" value="PLAY" onclick="game();" /><br/>
+</div>
+<script>
+function game()
+{
+	var min = parseInt(document.getElementById('min').value, 10)
+		max = parseInt(document.getElementById('max').value, 10);
+	if ((isNaN(min) || isNaN(max)))	
+		return ;
+	var random = Math.floor((Math.random() * max) + min),
+		i = 0,
+		string = prompt("Entrer un nombre :", "");
+	while (1)
+	{
+		var int_user = parseInt(string, 10);
+		if (!isNaN(int_user))
+			{
+				if (int_user > random)
+					{
+						string = prompt("C'est moin.\nEntrer un nombre :", "");
+					}
+				else if (int_user < random)
+					{
+						string = prompt("C'est plus.\nEntrer un nombre :", "");
+					}
+				else
+					{
+						alert("tu as gagné en " + i + " essai(s)");
+						break;
+					}
+				i++;
+			}
+		else
+			{
+			string = prompt("Entrer un nombre :", "");
+			}
+	}
+}
+</script>
+
+</body>
+</html>
